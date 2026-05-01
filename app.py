@@ -89,22 +89,23 @@ def main() -> None:
     else:
         st.markdown(result.answer)
 
-    with st.expander("Sources (page refs)", expanded=not result.refused):
-        if not result.retrieval.chunks:
-            st.caption(
-                f"No chunks passed the similarity threshold "
-                f"(max cosine = {result.retrieval.max_similarity:.3f})."
-            )
-        else:
-            for ch in result.retrieval.chunks:
-                label = _format_page_label(ch.page, ch.page_end)
-                st.markdown(
-                    f"**{label}** &middot; *{ch.section}*"
-                    f"  \n`sim={ch.similarity:.3f}  rerank={ch.rerank_score:+.3f}  rrf={ch.rrf_score:.3f}`"
+    if not result.refused:
+        with st.expander("Sources (page refs)", expanded=True):
+            if not result.retrieval.chunks:
+                st.caption(
+                    f"No chunks passed the similarity threshold "
+                    f"(max cosine = {result.retrieval.max_similarity:.3f})."
                 )
-                snippet = ch.text[:400] + ("..." if len(ch.text) > 400 else "")
-                st.caption(snippet)
-                st.divider()
+            else:
+                for ch in result.retrieval.chunks:
+                    label = _format_page_label(ch.page, ch.page_end)
+                    st.markdown(
+                        f"**{label}** &middot; *{ch.section}*"
+                        f"  \n`sim={ch.similarity:.3f}  rerank={ch.rerank_score:+.3f}  rrf={ch.rrf_score:.3f}`"
+                    )
+                    snippet = ch.text[:400] + ("..." if len(ch.text) > 400 else "")
+                    st.caption(snippet)
+                    st.divider()
 
     with st.expander("Debug: retrieval pipeline"):
         r = result.retrieval

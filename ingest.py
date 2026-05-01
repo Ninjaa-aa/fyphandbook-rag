@@ -65,6 +65,7 @@ def main(pdf: Path = PDF_PATH) -> None:
             "page_end": c.page_end,
             "section": c.section,
             "chunk_id": c.chunk_id,
+            "is_format_chunk": bool(c.is_format_chunk),
         }
         for c in chunks
     ]

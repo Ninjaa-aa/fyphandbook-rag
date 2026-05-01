@@ -51,8 +51,8 @@ MAX_SECTION_CHARS_BEFORE_SPLIT: int = 800
 
 TOP_K_DENSE: int = 30
 TOP_K_BM25: int = 30
-TOP_K_FUSED: int = 20
-TOP_K_RERANK: int = 5
+TOP_K_FUSED: int = 30
+TOP_K_RERANK: int = 6
 
 RRF_K: int = 60
 MMR_LAMBDA: float = 0.7
@@ -61,6 +61,27 @@ MMR_LAMBDA: float = 0.7
 SIMILARITY_THRESHOLD: float = 0.25
 # Secondary guard on cross-encoder logit (filters chunks before LLM call).
 RERANKER_MIN_SCORE: float = -2.0
+
+# Adaptive settings for chapter/list style questions.
+LIST_QUERY_KEYWORDS: tuple[str, ...] = (
+    "required chapters",
+    "chapters of",
+    "chapter-wise",
+    "report format",
+    "development fyp",
+    "r&d fyp",
+    "r&d-based fyp",
+)
+LIST_QUERY_TOP_K_FUSED: int = 45
+LIST_QUERY_TOP_K_FINAL: int = 10
+LIST_QUERY_MMR_ENABLED: bool = False
+LIST_QUERY_MMR_LAMBDA: float = 0.9
+LIST_QUERY_RERANK_MIN_SCORE: float = -3.0
+LIST_QUERY_ADJACENCY_WINDOW: int = 1
+LIST_QUERY_FORMAT_BOOST: float = 0.003
+
+# Long list chunks are often truncated at 512 tokens by default.
+RERANKER_MAX_LENGTH: int = 1024
 
 # ---------------------------------------------------------------------------
 # Vector store

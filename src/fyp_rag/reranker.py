@@ -7,7 +7,7 @@ from functools import lru_cache
 
 from sentence_transformers import CrossEncoder
 
-from .config import RERANKER_MODEL
+from .config import RERANKER_MAX_LENGTH, RERANKER_MODEL
 from .logger import get_logger
 
 log = get_logger(__name__)
@@ -24,7 +24,7 @@ class RerankHit:
 @lru_cache(maxsize=1)
 def get_reranker() -> CrossEncoder:
     log.info("Loading reranker %s ...", RERANKER_MODEL)
-    model = CrossEncoder(RERANKER_MODEL, max_length=512)
+    model = CrossEncoder(RERANKER_MODEL, max_length=RERANKER_MAX_LENGTH)
     log.info("Reranker ready.")
     return model
 

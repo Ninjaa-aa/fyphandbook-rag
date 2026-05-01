@@ -1,0 +1,679 @@
+==============================================================================
+FYP HANDBOOK RAG — PROMPT LOG
+==============================================================================
+
+=== SYSTEM PROMPT ===
+You are a handbook assistant for FAST-NUCES students.
+Answer ONLY from the context provided below. Quote or paraphrase the handbook faithfully.
+Cite page numbers inline as (p. X) or (p. X-Y) for ranges. Multiple distinct pages: (p. X, Y).
+Every factual sentence in your answer must end with a citation that points to the page in the context where the fact appears.
+Formatting rules:
+- If the answer has multiple items, return a numbered list: 1., 2., 3., ...
+- Keep each list item to one requirement or fact.
+- If useful, add a short heading line before the list.
+- Do not return one long paragraph when the answer is naturally a list.
+- If the question asks for required chapters/report format, include all chapter/items explicitly present in the context.
+- Do not say "not specified" when chapter/item text is present in the context.
+If the answer is not present in the context, reply EXACTLY:
+"I don't have that in the handbook."
+Never use outside knowledge. Never invent page numbers. Never answer questions that fall outside the FYP handbook scope.
+
+------------------------------------------------------------------------------
+=== INFERENCE PROMPT (Query 1) ===
+Question: What headings, fonts, and sizes are required in the FYP report?
+
+=== USER PROMPT ===
+Question: What headings, fonts, and sizes are required in the FYP report?
+
+Context:
+[p. 36 | Page 36 full text]
+should state the purpose, ﬁndings, and conclusions of your work 
+without commenting on or evaluating the work itself. Put the 
+abstract on a separate page that follows the title page.
+Acknowledgments (if any)  
+Executive Summary:
+The executive summary should be one to two pages' overview of 
+the information contained in the FYP report.  It should give the 
+reader an easy reference, in a very brief form, to the important 
+information contained in the report and explained in more detail
+
+---
+
+[p. 37 | References]
+This section should list all existing information sources used in the FYP.  It is important to allow the reader to see all of the sources used and enable the reader to further explore these sources to verify the information presented.
+
+---
+
+[p. 39 | Fonts, Type Styles]
+Paper. Standard A4 size Width: 8.27" Height: 11.69" Weight: 90 Grams Font Size = 11 (Normal Text) Font = Times New Roman Title= 26 bold (Times New Roman) Sub-title=20 bold (Times New Roman) Heading 1 (Font Size) = 16 (Bold) Font = Arial Heading 2 (Font Size) = 14 (Bold) Font = Arial Heading 3 (Font Size) = 13 (Bold, Italics) Font = Arial
+
+---
+
+[p. 41 | Page 41 full text]
+FAST-NUCES
+41
+BS Final Year Project Handbook 2023
+9. FYP Report Contents
+There are two types of FYPs – R&D and development. 
+Therefore, the basic contents for the two types of reports are 
+given below as a guideline. A speciﬁc and tailored format 
+according to an FYP's need is suggested by a supervisor.
+Development FYP Report Format
+1. Introduction 
+2. Research on existing products
+3. Project Vision 
+3.1. Problem Statement 
+3.2. Business Opportunity 
+3.3. Objectives 
+3.4. Project Scope
+
+---
+
+[p. 44-45 | FAST-NUCES]
+Brief Description. UN SDGs targeted by the FYP: FYP (Algorithms and knowledge used from Core Courses): 45 BS Final Year Project Handbook 2023 Group Members: External Supervisor (if any): Name of Faculty Supervisor Name Organization Supervisor’s Signature Dated
+
+---
+
+[p. 36 | Executive Summary:]
+The executive summary should be one to two pages' overview of the information contained in the FYP report.  It should give the reader an easy reference, in a very brief form, to the important information contained in the report and explained in more detail in the body of the report. People reading the report will use this section as a reference during presentations.
+
+Answer the question using ONLY the context above and cite page numbers.
+
+=== RAW RESPONSE ===
+## FYP Report Format Requirements
+1. The font for normal text should be Times New Roman with a size of 11 (p. 39).
+2. The title should be in Times New Roman with a size of 26 and bold (p. 39).
+3. The sub-title should be in Times New Roman with a size of 20 and bold (p. 39).
+4. Heading 1 should be in Arial with a size of 16 and bold (p. 39).
+5. Heading 2 should be in Arial with a size of 14 and bold (p. 39).
+6. Heading 3 should be in Arial with a size of 13, bold, and italics (p. 39).
+
+------------------------------------------------------------------------------
+=== INFERENCE PROMPT (Query 2) ===
+Question: What margins and spacing do we use?
+
+=== USER PROMPT ===
+Question: What margins and spacing do we use?
+
+Context:
+[p. 39-40 | FAST-NUCES]
+Spacing. Margins. Top = 1.5" Bottom = 1.0" Left = 2.0" Right = 1.0" Line Spacing = 1.5 Paragraph Spacing = 6 pts 40 BS Final Year Project Handbook 2023
+
+---
+
+[p. 39 | Page 39 full text]
+Paper
+Standard A4 size 
+Width: 8.27"
+Height: 11.69"
+Weight: 90 Grams
+Fonts, Type Styles
+Font Size = 11 (Normal Text)
+Font = Times New Roman 
+Title= 26 bold (Times New Roman)
+Sub-title=20 bold (Times New Roman)
+Heading 1 (Font Size) = 16 (Bold)
+Font = Arial
+Heading 2 (Font Size) = 14 (Bold)
+Font = Arial
+Heading 3 (Font Size) = 13 (Bold, Italics)
+Font = Arial
+Margins
+Top = 1.5"
+Bottom = 1.0"
+Left = 2.0"
+Right = 1.0"
+Spacing
+Line Spacing = 1.5
+Paragraph Spacing = 6 pts
+
+---
+
+[p. 40 | Page Numbers]
+Indentation. Indent all quotations comprising 4 or more lines by 5 spaces from left. Except for the title page, number all pages which come before the ﬁrst page of the body chapters consecutively with lower case roman numerals (i, ii, iii, iv,…). The ﬁrst page with Arabic numeral (1, 2, 3, and so on) starts from the page of the introduction but it is mentioned from page 2 onwards. Mention page numbers on the top right of the page. The ﬁrst page of each section or chapter will not carry the page number; however, the page number will be counted for the proceeding page.
+
+---
+
+[p. 39 | Page 39 full text]
+FAST-NUCES
+39
+BS Final Year Project Handbook 2023
+Arredondo, Lani (1999) Business Presentations, McGraw-Hill.
+Schill, Jann (1996) On Purpose, Heinemann, Australia.
+Tench, Paul (1981) Pronunciation Skills, Macmillan.
+Note: Use underlining (italics) for titles of books, periodicals 
+newspapers, works of art, ships, etc. Articles or chapters in 
+books, periodicals, or journals shall come in double quotes.
+Paper
+Standard A4 size 
+Width: 8.27"
+Height: 11.69"
+Weight: 90 Grams
+Fonts, Type Styles
+
+---
+
+[p. 40 | Page 40 full text]
+pages the title of the chapter or section will be mentioned. The 
+ﬁrst page of every section or chapter shall not carry the header.
+
+---
+
+[p. 36 | Abstract (optional) (50 to 125 words)]
+Three to ﬁve sentences describing the essence of the work. An abstract is a short, 50-125 words summary of a work. An Abstract should state the purpose, ﬁndings, and conclusions of your work without commenting on or evaluating the work itself. Put the abstract on a separate page that follows the title page.
+
+Answer the question using ONLY the context above and cite page numbers.
+
+=== RAW RESPONSE ===
+## Margins and Spacing
+1. The top margin should be 1.5" (p. 39-40, p. 39).
+2. The bottom margin should be 1.0" (p. 39-40, p. 39).
+3. The left margin should be 2.0" (p. 39-40, p. 39).
+4. The right margin should be 1.0" (p. 39-40, p. 39).
+5. The line spacing should be 1.5 (p. 39-40, p. 39).
+6. The paragraph spacing should be 6 pts (p. 39-40, p. 39).
+
+------------------------------------------------------------------------------
+=== INFERENCE PROMPT (Query 3) ===
+Question: What are the required chapters/sections of a Development FYP report?
+
+=== USER PROMPT ===
+Question: What are the required chapters/sections of a Development FYP report?
+
+Context:
+[p. 41 | Page 41 full text]
+FAST-NUCES
+41
+BS Final Year Project Handbook 2023
+9. FYP Report Contents
+There are two types of FYPs – R&D and development. 
+Therefore, the basic contents for the two types of reports are 
+given below as a guideline. A speciﬁc and tailored format 
+according to an FYP's need is suggested by a supervisor.
+Development FYP Report Format
+1. Introduction 
+2. Research on existing products
+3. Project Vision 
+3.1. Problem Statement 
+3.2. Business Opportunity 
+3.3. Objectives 
+3.4. Project Scope
+
+---
+
+[p. 42 | Page 42 full text]
+FAST-NUCES
+42
+BS Final Year Project Handbook 2023
+References
+Appendices
+R&D-Based FYP Report Format
+Chapter 1. Introduction
+1.1. Problem Domain 
+1.2. Research Problem Statement
+1.3. Software Requirements Speciﬁcation (if 
+applicable)
+Chapter 2. Literature Review 
+2.1. Research Item # 1
+ 
+2.1.1. Summary of the research item (1 or 2 
+paragraphs)
+ 
+2.1.2. Critical analysis of the research item 
+(Strengths and Weaknesses)
+ 
+2.1.3.  Relationship to the proposed research work
+2.2. Research Item # 2
+
+---
+
+[p. 42 | 1.3. Software Requirements Speciﬁcation (if]
+R&D-Based FYP Report Format. FAST-NUCES. 42 BS Final Year Project Handbook 2023 References Appendices Chapter 1. Introduction applicable) Chapter 2. Literature Review
+
+---
+
+[p. 41 | 9. FYP Report Contents]
+FAST-NUCES. 41 BS Final Year Project Handbook 2023 There are two types of FYPs – R&D and development. Therefore, the basic contents for the two types of reports are given below as a guideline. A speciﬁc and tailored format according to an FYP's need is suggested by a supervisor.
+
+---
+
+[p. 40 | Headers]
+The header will comprise the title of the Project report. On every odd page will appear the title of the report while on the even pages the title of the chapter or section will be mentioned. The ﬁrst page of every section or chapter shall not carry the header.
+
+---
+
+[p. 41 | Page 41 full text]
+3.1. Problem Statement 
+3.2. Business Opportunity 
+3.3. Objectives 
+3.4. Project Scope 
+3.5. Constraints
+3.6. Stakeholders Description
+ 
+3.6.1. Stakeholders Summary
+ 
+3.6.2. Key High Level Goals and Problems of 
+Stakeholders
+4. Software Requirement Speciﬁcations
+4.1. List of Features
+4.2. Functional Requirements
+4.3. Non-Functional Requirements
+5. Iteration Plan
+6. Iteration 1 (all artifacts mentioned in Table 1a)
+7. Iteration 2 (all artifacts mentioned in Table 1a)
+
+---
+
+[p. 43 | Page 43 full text]
+FAST-NUCES
+43
+BS Final Year Project Handbook 2023
+2.5. Research Item # 5
+2.5.1. Summary of the research item (1 or 2 
+paragraphs)
+2.5.2. Critical analysis of the research item 
+(Strengths and Weaknesses)
+2.5.3. Relationship to the proposed research work
+Chapter 3.  
+Proposed Approach (Framework/ Heuristic/  
+Algorithm/ Protocol/ Mathematical-model)
+Chapter 4.  Implementation (Simulations or Experiments)
+Chapter 5.  Validation and Testing
+Chapter 6.  Results and Discussion
+
+---
+
+[p. 40 | Page 40 full text]
+the page of the introduction but it is mentioned from page 2 
+onwards.
+Mention page numbers on the top right of the page. The ﬁrst page 
+of each section or chapter will not carry the page number; 
+however, the page number will be counted for the proceeding 
+page.
+Headers
+The header will comprise the title of the Project report. On every 
+odd page will appear the title of the report while on the even 
+pages the title of the chapter or section will be mentioned. The
+
+---
+
+[p. 40 | Page 40 full text]
+FAST-NUCES
+40
+BS Final Year Project Handbook 2023
+Indentation
+Indent all quotations comprising 4 or more lines by 5 spaces from 
+left.
+Page Numbers
+Except for the title page, number all pages which come before the 
+ﬁrst page of the body chapters consecutively with lower case 
+roman numerals (i, ii, iii, iv,…). 
+The ﬁrst page with Arabic numeral (1, 2, 3, and so on) starts from 
+the page of the introduction but it is mentioned from page 2 
+onwards.
+
+Answer the question using ONLY the context above and cite page numbers.
+
+=== RAW RESPONSE ===
+Required Chapters of a Development FYP
+1. Introduction (p. 41)
+2. Project Vision (p. 41)
+3. Problem Statement (p. 41)
+4. Business Opportunity (p. 41)
+5. Objectives (p. 41)
+6. Project Scope (p. 41)
+7. Constraints (p. 41)
+8. Stakeholders Description (p. 41)
+9. Stakeholders Summary (p. 41)
+10. Key High Level Goals and Problems of Stakeholders (p. 41)
+11. List of Features (p. 41)
+12. Functional Requirements (p. 41)
+13. Non-Functional Requirements (p. 41)
+14. Iteration (all artifacts mentioned in Table 1a) (p. 41)
+
+------------------------------------------------------------------------------
+=== INFERENCE PROMPT (Query 4) ===
+Question: What are the required chapters of an R&D-based FYP report?
+
+=== USER PROMPT ===
+Question: What are the required chapters of an R&D-based FYP report?
+
+Context:
+[p. 42 | Page 42 full text]
+FAST-NUCES
+42
+BS Final Year Project Handbook 2023
+References
+Appendices
+R&D-Based FYP Report Format
+Chapter 1. Introduction
+1.1. Problem Domain 
+1.2. Research Problem Statement
+1.3. Software Requirements Speciﬁcation (if 
+applicable)
+Chapter 2. Literature Review 
+2.1. Research Item # 1
+ 
+2.1.1. Summary of the research item (1 or 2 
+paragraphs)
+ 
+2.1.2. Critical analysis of the research item 
+(Strengths and Weaknesses)
+ 
+2.1.3.  Relationship to the proposed research work
+2.2. Research Item # 2
+
+---
+
+[p. 41 | Page 41 full text]
+FAST-NUCES
+41
+BS Final Year Project Handbook 2023
+9. FYP Report Contents
+There are two types of FYPs – R&D and development. 
+Therefore, the basic contents for the two types of reports are 
+given below as a guideline. A speciﬁc and tailored format 
+according to an FYP's need is suggested by a supervisor.
+Development FYP Report Format
+1. Introduction 
+2. Research on existing products
+3. Project Vision 
+3.1. Problem Statement 
+3.2. Business Opportunity 
+3.3. Objectives 
+3.4. Project Scope
+
+---
+
+[p. 42 | 1.3. Software Requirements Speciﬁcation (if]
+R&D-Based FYP Report Format. FAST-NUCES. 42 BS Final Year Project Handbook 2023 References Appendices Chapter 1. Introduction applicable) Chapter 2. Literature Review
+
+---
+
+[p. 41 | 9. FYP Report Contents]
+FAST-NUCES. 41 BS Final Year Project Handbook 2023 There are two types of FYPs – R&D and development. Therefore, the basic contents for the two types of reports are given below as a guideline. A speciﬁc and tailored format according to an FYP's need is suggested by a supervisor.
+
+---
+
+[p. 43 | 2.5.3. Relationship to the proposed research work]
+2.5.2. Critical analysis of the research item. 2.5.1. Summary of the research item (1 or 2. paragraphs) (Strengths and Weaknesses) Chapter 3. Proposed Approach (Framework/ Heuristic/ Algorithm/ Protocol/ Mathematical-model) Chapter 4.  Implementation (Simulations or Experiments) Chapter 5.  Validation and Testing Chapter 6.  Results and Discussion Chapter 7.  Conclusions and Future Work References Appendices
+
+---
+
+[p. 43 | Page 43 full text]
+FAST-NUCES
+43
+BS Final Year Project Handbook 2023
+2.5. Research Item # 5
+2.5.1. Summary of the research item (1 or 2 
+paragraphs)
+2.5.2. Critical analysis of the research item 
+(Strengths and Weaknesses)
+2.5.3. Relationship to the proposed research work
+Chapter 3.  
+Proposed Approach (Framework/ Heuristic/  
+Algorithm/ Protocol/ Mathematical-model)
+Chapter 4.  Implementation (Simulations or Experiments)
+Chapter 5.  Validation and Testing
+Chapter 6.  Results and Discussion
+
+---
+
+[p. 41 | Page 41 full text]
+3.1. Problem Statement 
+3.2. Business Opportunity 
+3.3. Objectives 
+3.4. Project Scope 
+3.5. Constraints
+3.6. Stakeholders Description
+ 
+3.6.1. Stakeholders Summary
+ 
+3.6.2. Key High Level Goals and Problems of 
+Stakeholders
+4. Software Requirement Speciﬁcations
+4.1. List of Features
+4.2. Functional Requirements
+4.3. Non-Functional Requirements
+5. Iteration Plan
+6. Iteration 1 (all artifacts mentioned in Table 1a)
+7. Iteration 2 (all artifacts mentioned in Table 1a)
+
+---
+
+[p. 40 | Headers]
+The header will comprise the title of the Project report. On every odd page will appear the title of the report while on the even pages the title of the chapter or section will be mentioned. The ﬁrst page of every section or chapter shall not carry the header.
+
+Answer the question using ONLY the context above and cite page numbers.
+
+=== RAW RESPONSE ===
+Required Chapters of an R&D FYP
+1. Chapter 1. Introduction (p. 42)
+2. Chapter 2. Literature Review (p. 42)
+3. References (p. 42)
+4. Appendices (p. 42)
+5. Chapter 1. Introduction applicable) Chapter (p. 42)
+6. Chapter 3. Proposed Approach (Framework/ Heuristic/ Algorithm/ Protocol/ Mathematical-model) Chapter (p. 43)
+7. Chapter 5. Validation and Testing Chapter (p. 43)
+8. Chapter 7. Conclusions and Future Work References Appendices (p. 43)
+
+------------------------------------------------------------------------------
+=== INFERENCE PROMPT (Query 5) ===
+Question: How should endnotes like 'Ibid.' and 'op. cit.' be used?
+
+=== USER PROMPT ===
+Question: How should endnotes like 'Ibid.' and 'op. cit.' be used?
+
+Context:
+[p. 38 | 3. Paul Tench (1981) Pronunciation Skills,]
+2. Jann Schill (1996) On Purpose, Heinemann,. 1. Lani Arredondo (1999) Business Presentations,. McGraw-Hill, pp. 23-34. Australia, p. 23. Macmillan, p. 23. In case an endnote is followed by another citing the same source, only the word: “Ibid” (as above) shall substitute for the entire text. If the page no. is diﬀerent, then the page number shall appear after the word: “Ibid”. For example:
+
+---
+
+[p. 38 | Page 38 full text]
+p. 23.
+    Ibid., p. 54.
+In case the same source comes to be mentioned after a few 
+interrupting sources, then the word “op cit” would suﬃce 
+(mentioned earlier is written), followed by the page number.
+Bibliography or Literature Cited
+Bibliography will appear in alphabetic order of the authors' 
+surnames. Author's surname shall come ﬁrst as is the case in the 
+catalogues of libraries.
+
+---
+
+[p. 38 | Page 38 full text]
+FAST-NUCES
+38
+BS Final Year Project Handbook 2023
+Any tables, ﬁgures, form, or other materials that are not totally 
+central to the analysis but that need to be shown are placed in the 
+Appendix.
+Footnotes/ End Notes
+Footnotes are located at the bottom of a page. End notes are like 
+footnotes but are located at the back rather than the bottom of 
+each page. These would include all of the references for all works 
+cited in the review of related literature or any other sections of the
+
+---
+
+[p. 40 | Page Numbers]
+Indentation. Indent all quotations comprising 4 or more lines by 5 spaces from left. Except for the title page, number all pages which come before the ﬁrst page of the body chapters consecutively with lower case roman numerals (i, ii, iii, iv,…). The ﬁrst page with Arabic numeral (1, 2, 3, and so on) starts from the page of the introduction but it is mentioned from page 2 onwards. Mention page numbers on the top right of the page. The ﬁrst page of each section or chapter will not carry the page number; however, the page number will be counted for the proceeding page.
+
+---
+
+[p. 39 | FAST-NUCES]
+39 BS Final Year Project Handbook 2023 Arredondo, Lani (1999) Business Presentations, McGraw-Hill. Schill, Jann (1996) On Purpose, Heinemann, Australia. Tench, Paul (1981) Pronunciation Skills, Macmillan. Note: Use underlining (italics) for titles of books, periodicals newspapers, works of art, ships, etc. Articles or chapters in books, periodicals, or journals shall come in double quotes.
+
+---
+
+[p. 37 | Page 37 full text]
+Recommendations are your choices for strategies or tactics 
+based on your conclusions. Quite often authors are tempted to 
+speculate on outcomes that cannot be supported by the ﬁndings. 
+Do not draw any conclusions or make any recommendations that 
+your work cannot clearly support.
+References 
+This section should list all existing information sources used in 
+the FYP.  It is important to allow the reader to see all of the 
+sources used and enable the reader to further explore these
+
+Answer the question using ONLY the context above and cite page numbers.
+
+=== RAW RESPONSE ===
+## Endnote Usage
+1. If an endnote is followed by another citing the same source, only the word "Ibid" shall substitute for the entire text (p. 38).
+2. If the page number is different, then the page number shall appear after the word "Ibid" (p. 38).
+3. If the same source is mentioned after a few interrupting sources, then the word "op cit" would suffice, followed by the page number (p. 38).
+
+------------------------------------------------------------------------------
+=== INFERENCE PROMPT (Query 6) ===
+Question: What goes into the Executive Summary and Abstract?
+
+=== USER PROMPT ===
+Question: What goes into the Executive Summary and Abstract?
+
+Context:
+[p. 36 | Page 36 full text]
+should state the purpose, ﬁndings, and conclusions of your work 
+without commenting on or evaluating the work itself. Put the 
+abstract on a separate page that follows the title page.
+Acknowledgments (if any)  
+Executive Summary:
+The executive summary should be one to two pages' overview of 
+the information contained in the FYP report.  It should give the 
+reader an easy reference, in a very brief form, to the important 
+information contained in the report and explained in more detail
+
+---
+
+[p. 36 | Abstract (optional) (50 to 125 words)]
+Three to ﬁve sentences describing the essence of the work. An abstract is a short, 50-125 words summary of a work. An Abstract should state the purpose, ﬁndings, and conclusions of your work without commenting on or evaluating the work itself. Put the abstract on a separate page that follows the title page.
+
+---
+
+[p. 41 | Page 41 full text]
+3.1. Problem Statement 
+3.2. Business Opportunity 
+3.3. Objectives 
+3.4. Project Scope 
+3.5. Constraints
+3.6. Stakeholders Description
+ 
+3.6.1. Stakeholders Summary
+ 
+3.6.2. Key High Level Goals and Problems of 
+Stakeholders
+4. Software Requirement Speciﬁcations
+4.1. List of Features
+4.2. Functional Requirements
+4.3. Non-Functional Requirements
+5. Iteration Plan
+6. Iteration 1 (all artifacts mentioned in Table 1a)
+7. Iteration 2 (all artifacts mentioned in Table 1a)
+
+---
+
+[p. 37 | Page 37 full text]
+FAST-NUCES
+37
+BS Final Year Project Handbook 2023
+Body Chapters
+Conclusions and/ or Recommendations
+Present a summary of what you found in the results section. Here 
+you should describe the techniques that you used for each 
+analysis and the results of each analysis. 
+Conclusions are broad generalizations that focus on addressing 
+the questions to answer which the project was undertaken. 
+Recommendations are your choices for strategies or tactics
+
+---
+
+[p. 36 | Page 36 full text]
+FAST-NUCES
+36
+BS Final Year Project Handbook 2023
+Authors' Declaration
+This states Authors' declaration that the work presented in the 
+report is their own, and has not been submitted/presented 
+previously to any other institution or organization. 
+Abstract (optional) (50 to 125 words)
+Three to ﬁve sentences describing the essence of the work. An 
+abstract is a short, 50-125 words summary of a work. An Abstract 
+should state the purpose, ﬁndings, and conclusions of your work
+
+---
+
+[p. 36 | Page 36 full text]
+information contained in the report and explained in more detail 
+in the body of the report. People reading the report will use this 
+section as a reference during presentations. 
+Table of Contents 
+The table of contents lists the information contained in the report 
+in the order in which it will be found. All major topics of interest 
+should be listed. 
+Introduction
+The introduction should contain a brief overview of the problem 
+being addressed and the background information needed for the
+
+Answer the question using ONLY the context above and cite page numbers.
+
+=== RAW RESPONSE ===
+## Executive Summary and Abstract Content
+1. The Executive Summary should give the reader an easy reference to the important information contained in the report, in a very brief form, and explained in more detail in the body of the report (p. 36).
+2. The Executive Summary should be one to two pages' overview of the information contained in the FYP report (p. 36).
+3. The Abstract should state the purpose, findings, and conclusions of the work without commenting on or evaluating the work itself (p. 36, p. 36).
+4. The Abstract should be a short, 50-125 words summary of the work, and should be three to five sentences describing the essence of the work (p. 36, p. 36).
+
+------------------------------------------------------------------------------
+=== INFERENCE PROMPT (Query 7) ===
+Question: What is the cafeteria menu at FAST?
+
+=== USER PROMPT ===
+Question: What is the cafeteria menu at FAST?
+
+Context:
+[p. 49 | Page 49 full text]
+FAST-NUCES
+49
+BS Final Year Project Handbook 2023
+Evaluation: 
+(A= Excellent, B=Good, C=Satisfactory, D=Not Satisfactory, 
+*
+F=Not Accepted )
+(Dev = Development FYP, R&D = R&D-based FYP)
+* Justify in case of ticking “Not Accepted”. Any other 
+comments/suggestions!
+
+---
+
+[p. 56-62 | of Computer & Emerging Sciences, [Campus]]
+FAST-NUCES. FAST-NUCES. 56 BS Final Year Project Handbook 2023 57 BS Final Year Project Handbook 2023 RN Stationers 0300-516 6046 - Oct 2023/300
+
+---
+
+[p. 51-52 | of Computer & Emerging Sciences, [Campus]]
+FAST-NUCES. FAST-NUCES. 51 BS Final Year Project Handbook 2023 52 BS Final Year Project Handbook 2023 Title of FYP: Group Members: About Evaluator:
+
+---
+
+[p. 31 | Page 31 full text]
+FAST-NUCES
+31
+BS Final Year Project Handbook 2023
+
+---
+
+[p. 3-6 | FAST-NUCES]
+FAST-NUCES. FAST-NUCES. FAST-NUCES. 03 October 04 BS Final Year Project Handbook 2023 05 BS Final Year Project Handbook 2023 06 BS Final Year Project Handbook 2023
+
+---
+
+[p. 50 | of Computer & Emerging Sciences, [Campus]]
+FAST-NUCES. 50 BS Final Year Project Handbook 2023 Title of FYP: Group Members: About Evaluator: Evaluation: (A= Excellent, B=Good, C=Satisfactory, D=Not Satisfactory, *
+
+Answer the question using ONLY the context above and cite page numbers.
+
+=== RAW RESPONSE ===
+I don't have that in the handbook.

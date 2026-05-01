@@ -57,6 +57,7 @@ class Chunk:
     page_end: int
     section: str
     chunk_id: str
+    is_format_chunk: bool = False
 
 
 def _is_heading(span: Span, body_size: float) -> bool:
@@ -149,9 +150,59 @@ def _split_long_section(sec: Section, splitter: RecursiveCharacterTextSplitter) 
                 page_end=sec.page_end,
                 section=sec.title,
                 chunk_id=f"p{sec.page_start}_s{abs(hash(sec.title)) % 10**6}_c{i}",
+                is_format_chunk=_looks_like_report_format(sec.title, part),
             )
         )
     return chunks
+
+
+def _looks_like_report_format(section: str, text: str) -> bool:
+    joined = f"{section} {text}".lower()
+    return any(
+        marker in joined
+        for marker in (
+            "report format",
+            "fyp report contents",
+            "chapter",
+            "software requirement specifications",
+            "iteration plan",
+            "user manual",
+            "literature review",
+            "proposed approach",
+            "validation and testing",
+            "results and discussion",
+            "conclusions and future work",
+        )
+    )
+
+
+def _build_page_fallback_chunks(
+    pages: list[Page],
+    splitter: RecursiveCharacterTextSplitter,
+) -> list[Chunk]:
+    """Add page-level fallback chunks to preserve list/table-style text blocks.
+
+    Span-based sectioning can occasionally flatten or skip structured lines.
+    These page chunks ensure exact report-format lists remain retrievable.
+    """
+    page_chunks: list[Chunk] = []
+    for page in pages:
+        text = page.text.strip()
+        if not text:
+            continue
+        parts = splitter.split_text(text)
+        for i, part in enumerate(parts):
+            page_chunks.append(
+                Chunk(
+                    text=part.strip(),
+                    page=page.page,
+                    page_end=page.page,
+                    section=f"Page {page.page} full text",
+                    chunk_id=f"p{page.page}_page_c{i}",
+                    is_format_chunk=_looks_like_report_format(f"Page {page.page}", part),
+                )
+            )
+    return page_chunks
 
 
 def chunk_pages(pages: list[Page], body_size: float) -> list[Chunk]:
@@ -180,10 +231,15 @@ def chunk_pages(pages: list[Page], body_size: float) -> list[Chunk]:
                     page_end=sec.page_end,
                     section=sec.title,
                     chunk_id=f"p{sec.page_start}_s{abs(hash(sec.title)) % 10**6}_c0",
+                    is_format_chunk=_looks_like_report_format(sec.title, body),
                 )
             )
         else:
             chunks.extend(_split_long_section(sec, splitter))
+
+    # Fallback representation: preserve raw page text for better recall on
+    # numbered chapter lists (e.g., Development FYP report format).
+    chunks.extend(_build_page_fallback_chunks(pages, splitter))
 
     log.info(
         "Built %d chunks from %d sections (avg chunk len %.0f chars)",
