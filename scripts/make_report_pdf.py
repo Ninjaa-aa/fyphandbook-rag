@@ -1,9 +1,9 @@
-"""Render `report/report.md` to a 1-2 page PDF deliverable using ReportLab.
+"""Render `report/report.md` to a PDF deliverable using ReportLab.
 
 The renderer is intentionally minimal: it parses the markdown line-by-line for
 headings, bullets, code fences, and pipe tables — enough for our own report
-file, not a general-purpose markdown engine. Screenshots placed under
-`outputs/screenshots/*.png` are appended at the end.
+file, not a general-purpose markdown engine. A cover page, architecture image,
+and ordered screenshots are appended from `outputs/screenshots/`.
 
 Run with:
     uv run python scripts/make_report_pdf.py
@@ -18,9 +18,11 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from reportlab.lib import colors
+from reportlab.lib.enums import TA_CENTER
 from reportlab.lib.pagesizes import LETTER
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import inch
+from reportlab.lib.utils import ImageReader
 from reportlab.platypus import (
     Image,
     PageBreak,
@@ -36,11 +38,49 @@ from fyp_rag.config import REPORT_DIR, ROOT_DIR  # noqa: E402
 REPORT_MD = REPORT_DIR / "report.md"
 REPORT_PDF = REPORT_DIR / "report.pdf"
 SCREENSHOT_DIR = ROOT_DIR / "outputs" / "screenshots"
+COVER_LOGO = SCREENSHOT_DIR / "logo.png"
+ORDERED_SCREENSHOTS: tuple[tuple[str, str], ...] = (
+    ("architecture.png", "System Architecture"),
+    ("q1.png", "Validation Query 1 - Headings, Fonts, and Sizes"),
+    ("q2.png", "Validation Query 2 - Margins and Spacing"),
+    ("q3.png", "Validation Query 3 - Development FYP Report Sections"),
+    ("q4.png", "Validation Query 4 - R&D-Based FYP Report Chapters"),
+    ("q5.png", "Validation Query 5 - Ibid. and op. cit. Endnotes"),
+    ("q6.png", "Validation Query 6 - Executive Summary and Abstract"),
+    ("out-of-scope.png", "Out-of-Scope Refusal Test"),
+)
 
 
 def _styles():
     base = getSampleStyleSheet()
     return {
+        "cover_title": ParagraphStyle(
+            "cover_title",
+            parent=base["Title"],
+            fontSize=20,
+            leading=24,
+            alignment=TA_CENTER,
+            spaceAfter=18,
+            textColor=colors.HexColor("#111827"),
+        ),
+        "cover_subtitle": ParagraphStyle(
+            "cover_subtitle",
+            parent=base["Heading2"],
+            fontSize=14,
+            leading=18,
+            alignment=TA_CENTER,
+            spaceAfter=16,
+            textColor=colors.HexColor("#1f2937"),
+        ),
+        "cover_meta": ParagraphStyle(
+            "cover_meta",
+            parent=base["BodyText"],
+            fontSize=12,
+            leading=18,
+            alignment=TA_CENTER,
+            spaceAfter=8,
+            textColor=colors.HexColor("#111827"),
+        ),
         "h1": ParagraphStyle(
             "h1", parent=base["Heading1"], fontSize=15, spaceAfter=8, textColor=colors.HexColor("#1f2937"),
         ),
@@ -58,6 +98,14 @@ def _styles():
         ),
         "bullet": ParagraphStyle(
             "bullet", parent=base["BodyText"], fontSize=9.5, leading=12.5, leftIndent=14, bulletIndent=4,
+        ),
+        "caption": ParagraphStyle(
+            "caption",
+            parent=base["BodyText"],
+            fontSize=9,
+            leading=11,
+            alignment=TA_CENTER,
+            textColor=colors.HexColor("#4b5563"),
         ),
     }
 
@@ -159,23 +207,61 @@ def _md_to_flowables(md: str):
     return flow
 
 
-def _append_screenshots(flow):
-    if not SCREENSHOT_DIR.exists():
-        return
-    images = sorted([p for p in SCREENSHOT_DIR.iterdir() if p.suffix.lower() in {".png", ".jpg", ".jpeg"}])
-    if not images:
-        return
+def _scaled_image(path: Path, *, max_width: float, max_height: float) -> Image:
+    """Create a ReportLab image that preserves aspect ratio within bounds."""
+    width_px, height_px = ImageReader(str(path)).getSize()
+    scale = min(max_width / width_px, max_height / height_px)
+    img = Image(
+        str(path),
+        width=width_px * scale,
+        height=height_px * scale,
+        kind="proportional",
+    )
+    img.hAlign = "CENTER"
+    return img
 
+
+def _cover_page():
+    styles = _styles()
+    flow = []
+
+    if COVER_LOGO.exists():
+        flow.append(_scaled_image(COVER_LOGO, max_width=2.0 * inch, max_height=2.0 * inch))
+        flow.append(Spacer(1, 0.35 * inch))
+
+    flow.append(Paragraph("FYP Handbook RAG Assistant", styles["cover_title"]))
+    flow.append(Paragraph("Assignment 03", styles["cover_subtitle"]))
+    flow.append(Spacer(1, 0.2 * inch))
+    flow.append(Paragraph("<b>Submitted By</b>", styles["cover_meta"]))
+    flow.append(Paragraph("Hammad Zahid", styles["cover_meta"]))
+    flow.append(Paragraph("SE-D", styles["cover_meta"]))
+    flow.append(Paragraph("22i-2433", styles["cover_meta"]))
+    flow.append(Spacer(1, 0.25 * inch))
+    flow.append(Paragraph("<b>Submitted To</b>", styles["cover_meta"]))
+    flow.append(Paragraph("Dr. Shahela Saif", styles["cover_meta"]))
     flow.append(PageBreak())
-    flow.append(Paragraph("Screenshots", _styles()["h1"]))
-    for img_path in images[:4]:
-        try:
-            img = Image(str(img_path), width=6.0 * inch, height=4.0 * inch, kind="proportional")
-            flow.append(img)
-            flow.append(Paragraph(f"<i>{img_path.name}</i>", _styles()["body"]))
-            flow.append(Spacer(1, 8))
-        except Exception:
+    return flow
+
+
+def _append_ordered_screenshots(flow):
+    styles = _styles()
+    flow.append(PageBreak())
+    flow.append(Paragraph("Architecture and Screenshots", styles["h1"]))
+    flow.append(Spacer(1, 6))
+
+    for idx, (filename, title) in enumerate(ORDERED_SCREENSHOTS):
+        img_path = SCREENSHOT_DIR / filename
+        if idx:
+            flow.append(PageBreak())
+
+        flow.append(Paragraph(title, styles["h2"]))
+        if not img_path.exists():
+            flow.append(Paragraph(f"Missing image: <font face='Courier'>{img_path}</font>", styles["body"]))
             continue
+
+        flow.append(_scaled_image(img_path, max_width=7.0 * inch, max_height=5.6 * inch))
+        flow.append(Spacer(1, 4))
+        flow.append(Paragraph(f"<i>{filename}</i>", styles["caption"]))
 
 
 def main() -> None:
@@ -196,8 +282,9 @@ def main() -> None:
         author="FYP RAG Assistant",
     )
 
-    flow = _md_to_flowables(md)
-    _append_screenshots(flow)
+    flow = _cover_page()
+    flow.extend(_md_to_flowables(md))
+    _append_ordered_screenshots(flow)
 
     doc.build(flow)
     print(f"Wrote {REPORT_PDF}")
