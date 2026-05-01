@@ -17,6 +17,7 @@ dependencies = [
     "tqdm>=4.66.0",
     "nltk>=3.9.0",
     "reportlab>=4.2.0",
+    "torchvision>=0.26.0",
 ]
 
 [build-system]
